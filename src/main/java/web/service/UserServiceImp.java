@@ -9,10 +9,9 @@ import java.util.List;
 
 
 @Service
-@Transactional
 public class UserServiceImp implements UserService {
 
-    private UserDaoImp userDao;
+    private final UserDaoImp userDao;
 
     public UserServiceImp(UserDaoImp userDao) {
         this.userDao = userDao;
@@ -24,11 +23,13 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    @Transactional
     public void createUser(User user) {
         userDao.createUser(user);
     }
 
     @Override
+    @Transactional
     public void updateUser(User user) {
         userDao.updateUser(user);
     }
@@ -39,6 +40,7 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    @Transactional
     public void deleteUser(long id) {
         userDao.deleteUser(id);
     }
